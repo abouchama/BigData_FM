@@ -10,23 +10,26 @@
           "color": "#7EB26D",
           "id": 0,
           "pin": false,
-          "type": "lucene"
+          "type": "lucene",
+          "enable": true
         },
         "1": {
           "id": 1,
           "color": "#EAB839",
-          "query": "metric_path:\"node1.Threading.ThreadCount\"",
+          "query": "brand:Samsung",
           "alias": "",
           "pin": false,
-          "type": "lucene"
+          "type": "lucene",
+          "enable": true
         },
         "2": {
           "id": 2,
           "color": "#6ED0E0",
-          "query": "*",
+          "query": "brand:Apple",
           "alias": "",
           "pin": false,
-          "type": "lucene"
+          "type": "lucene",
+          "enable": true
         },
         "3": {
           "id": 3,
@@ -34,7 +37,8 @@
           "query": "type:\"log\"",
           "alias": "",
           "pin": false,
-          "type": "lucene"
+          "type": "lucene",
+          "enable": true
         },
         "4": {
           "id": 4,
@@ -42,15 +46,36 @@
           "query": "type:\"jmx\"",
           "alias": "",
           "pin": false,
-          "type": "lucene"
+          "type": "lucene",
+          "enable": true
+        },
+        "5": {
+          "id": 5,
+          "color": "#1F78C1",
+          "alias": "",
+          "pin": false,
+          "type": "lucene",
+          "enable": true,
+          "query": "category:Photo"
+        },
+        "6": {
+          "id": 6,
+          "color": "#BA43A9",
+          "alias": "",
+          "pin": false,
+          "type": "lucene",
+          "enable": true,
+          "query": "price"
         }
       },
       "ids": [
         0,
         1,
+        2,
         3,
         4,
-        2
+        5,
+        6
       ]
     },
     "filter": {
@@ -62,7 +87,7 @@
         "0": {
           "type": "time",
           "field": "@timestamp",
-          "from": "now-5m",
+          "from": "now-12h",
           "to": "now",
           "mandate": "must",
           "active": true,
@@ -78,28 +103,28 @@
   "rows": [
     {
       "title": "E",
-      "height": "150px",
+      "height": "300px",
       "editable": true,
       "collapse": false,
       "collapsable": true,
       "panels": [
         {
-          "span": 4,
+          "span": 6,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
-          "mode": "count",
+          "mode": "total",
           "time_field": "@timestamp",
           "queries": {
             "mode": "selected",
             "ids": [
-              3
+              6
             ]
           },
-          "value_field": null,
+          "value_field": "price",
           "auto_int": true,
           "resolution": 100,
-          "interval": "1s",
+          "interval": "5m",
           "intervals": [
             "auto",
             "1s",
@@ -115,15 +140,15 @@
             "1M",
             "1y"
           ],
-          "fill": 0,
+          "fill": 3,
           "linewidth": 3,
           "timezone": "browser",
           "spyable": true,
           "zoomlinks": true,
           "bars": true,
           "stack": true,
-          "points": false,
-          "lines": false,
+          "points": true,
+          "lines": true,
           "legend": true,
           "x-axis": true,
           "y-axis": true,
@@ -132,9 +157,48 @@
           "options": true,
           "tooltip": {
             "value_type": "cumulative",
-            "query_as_alias": false
+            "query_as_alias": true
           },
-          "title": "Log"
+          "title": "CA",
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "annotate": {
+            "enable": true,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "pointradius": 5,
+          "show_query": true,
+          "legend_counts": true,
+          "zerofill": true,
+          "derivative": false
+        },
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "bettermap",
+          "loadingEditor": false,
+          "field": "geoip.location",
+          "size": 1000,
+          "spyable": true,
+          "tooltip": "_id",
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              3
+            ]
+          },
+          "title": "Map c"
         },
         {
           "error": false,
@@ -255,27 +319,144 @@
           "title": "Men/Women"
         },
         {
-          "span": 4,
+          "error": false,
+          "span": 3,
           "editable": true,
-          "type": "hits",
+          "type": "terms",
           "loadingEditor": false,
+          "field": "brand.raw",
+          "exclude": [],
+          "missing": true,
+          "other": true,
+          "size": 5,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Top Brand"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "category.raw",
+          "exclude": [],
+          "missing": true,
+          "other": true,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "above",
+          "spyable": true,
           "queries": {
             "mode": "selected",
             "ids": [
               3
             ]
           },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Top Cat"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "sex.raw",
+          "exclude": [],
+          "missing": true,
+          "other": true,
+          "size": 10,
+          "order": "count",
           "style": {
             "font-size": "10pt"
           },
-          "arrangement": "horizontal",
-          "chart": "bar",
-          "counter_pos": "above",
           "donut": false,
           "tilt": false,
           "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "above",
           "spyable": true,
-          "title": "CA"
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              3
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Men/Women"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "geoip.city_name.raw",
+          "exclude": [
+            "Missing field"
+          ],
+          "missing": true,
+          "other": true,
+          "size": 5,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              3
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Top city"
         }
       ],
       "notice": false
@@ -288,75 +469,115 @@
       "collapsable": true,
       "panels": [
         {
-          "span": 4,
+          "error": false,
+          "span": 3,
           "editable": true,
-          "type": "histogram",
+          "type": "goal",
           "loadingEditor": false,
-          "mode": "total",
-          "time_field": "logs.@timestamp",
+          "donut": true,
+          "tilt": false,
+          "legend": "above",
+          "labels": true,
+          "spyable": true,
+          "query": {
+            "goal": 100
+          },
           "queries": {
             "mode": "selected",
             "ids": [
-              3
+              2
             ]
           },
-          "value_field": "log.price",
-          "auto_int": true,
-          "resolution": 100,
-          "interval": "1s",
-          "intervals": [
-            "auto",
-            "1s",
-            "1m",
-            "5m",
-            "10m",
-            "30m",
-            "1h",
-            "3h",
-            "12h",
-            "1d",
-            "1w",
-            "1M",
-            "1y"
-          ],
-          "fill": 0,
-          "linewidth": 3,
-          "timezone": "browser",
-          "spyable": true,
-          "zoomlinks": true,
-          "bars": true,
-          "stack": true,
-          "points": true,
-          "lines": true,
-          "legend": true,
-          "x-axis": true,
-          "y-axis": true,
-          "percentage": false,
-          "interactive": true,
-          "options": true,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": false
-          },
-          "title": "CA"
+          "title": "Brand goal"
         },
         {
           "error": false,
-          "span": 4,
+          "span": 3,
           "editable": true,
-          "type": "bettermap",
+          "type": "goal",
           "loadingEditor": false,
+          "donut": true,
+          "tilt": false,
+          "legend": "above",
+          "labels": true,
+          "spyable": true,
+          "query": {
+            "goal": 100
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              5
+            ]
+          },
+          "title": "Ads Photo Cat"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "brand",
+          "exclude": [],
+          "missing": true,
+          "other": true,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              1,
+              2
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Apple vs Samsung"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "geoip.country_name.raw",
+          "exclude": [],
+          "missing": true,
+          "other": true,
+          "size": 5,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
           "queries": {
             "mode": "selected",
             "ids": [
               3
             ]
           },
-          "size": 1000,
-          "spyable": true,
-          "tooltip": "_id",
-          "field": "log.geoip.location",
-          "title": "Clients Map"
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Top country"
         }
       ],
       "notice": false
@@ -367,21 +588,25 @@
   "index": {
     "interval": "none",
     "pattern": "[logstash-]YYYY.MM.DD",
-    "default": "logstash-*"
+    "default": "logstash-*",
+    "warm_fields": true
   },
   "style": "dark",
   "panel_hints": true,
   "pulldowns": [
     {
       "type": "query",
-      "collapse": false,
+      "collapse": true,
       "notice": false,
       "enable": true,
       "query": "*",
       "pinned": true,
       "history": [
-        "*",
+        "type:\"jmx\"",
         "type:\"log\"",
+        "brand",
+        "metric_path:\"node1.Threading.ThreadCount\"",
+        "*",
         "metric_path:\"node1.Threading.ThreadCount",
         "type:log",
         "node1.OperatingSystem.TotalSwapSpaceSize",
@@ -392,7 +617,7 @@
     },
     {
       "type": "filtering",
-      "collapse": false,
+      "collapse": true,
       "notice": true,
       "enable": true
     }
