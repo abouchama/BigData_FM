@@ -421,7 +421,7 @@
           "tmode": "terms",
           "tstat": "total",
           "valuefield": "",
-          "title": "Men/Women"
+          "title": "Men vs Women"
         },
         {
           "error": false,
@@ -488,7 +488,7 @@
               2
             ]
           },
-          "title": "Brand goal"
+          "title": "Apple goal"
         },
         {
           "error": false,
@@ -510,7 +510,7 @@
               5
             ]
           },
-          "title": "Ads Photo Cat"
+          "title": "Photo Cat Goal"
         },
         {
           "error": false,
