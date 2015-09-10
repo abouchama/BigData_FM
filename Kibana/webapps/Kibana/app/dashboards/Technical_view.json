@@ -1,5 +1,5 @@
 {
-  "title": "Integration View",
+  "title": "Technical View",
   "services": {
     "query": {
       "list": {
@@ -357,7 +357,7 @@
   },
   "rows": [
     {
-      "title": "Camel",
+      "title": "JVM",
       "height": "300px",
       "editable": true,
       "collapse": false,
@@ -382,8 +382,10 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              12,
-              13
+              20,
+              21,
+              22,
+              23
             ]
           },
           "annotate": {
@@ -435,7 +437,7 @@
             "value_type": "individual",
             "query_as_alias": true
           },
-          "title": "Flows Usage",
+          "title": "NonHeapMemory",
           "scaleSeconds": true
         },
         {
@@ -457,9 +459,11 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              14,
-              15,
-              16
+              23,
+              24,
+              25,
+              26,
+              27
             ]
           },
           "annotate": {
@@ -511,7 +515,158 @@
             "value_type": "individual",
             "query_as_alias": true
           },
-          "title": "Flows Usage",
+          "title": "HeapMemory",
+          "scaleSeconds": true
+        },
+        {
+          "span": 5,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "metric_value_number",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              28,
+              29,
+              30
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "1s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 3,
+          "linewidth": 3,
+          "points": true,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": false,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": false,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true
+          },
+          "title": "Threads",
+          "scaleSeconds": true
+        },
+        {
+          "span": 5,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "mean",
+          "time_field": "@timestamp",
+          "value_field": "metric_value_number",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "selected",
+            "ids": [
+              18,
+              19
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "1s",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 3,
+          "linewidth": 3,
+          "points": true,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "zoomlinks": true,
+          "options": true,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": false,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": false,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true
+          },
+          "title": "OS",
           "scaleSeconds": true
         },
         {
@@ -523,7 +678,7 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              13
+              32
             ]
           },
           "style": {
@@ -548,374 +703,6 @@
             "variance": false
           },
           "title": "Exchanges Completed",
-          "field": "metric_value_number"
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "A-MQ Ressources",
-      "height": "300px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 5,
-          "editable": true,
-          "type": "histogram",
-          "loadingEditor": false,
-          "mode": "mean",
-          "time_field": "@timestamp",
-          "value_field": "metric_value_number",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_format": "none",
-          "grid": {
-            "max": 100,
-            "min": 0
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1,
-              7
-            ]
-          },
-          "annotate": {
-            "enable": false,
-            "query": "*",
-            "size": 20,
-            "field": "_type",
-            "sort": [
-              "_score",
-              "desc"
-            ]
-          },
-          "auto_int": true,
-          "resolution": 100,
-          "interval": "1s",
-          "intervals": [
-            "auto",
-            "1s",
-            "1m",
-            "5m",
-            "10m",
-            "30m",
-            "1h",
-            "3h",
-            "12h",
-            "1d",
-            "1w",
-            "1y"
-          ],
-          "lines": true,
-          "fill": 3,
-          "linewidth": 3,
-          "points": true,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "spyable": true,
-          "zoomlinks": true,
-          "options": true,
-          "legend": true,
-          "show_query": false,
-          "interactive": true,
-          "legend_counts": false,
-          "timezone": "browser",
-          "percentage": false,
-          "zerofill": false,
-          "derivative": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true
-          },
-          "title": "A-MQ Ressources",
-          "scaleSeconds": true
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "stats",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              7
-            ]
-          },
-          "style": {
-            "font-size": "24pt"
-          },
-          "format": "number",
-          "mode": "mean",
-          "display_breakdown": "yes",
-          "sort_field": "",
-          "sort_reverse": false,
-          "label_name": "Query",
-          "value_name": "Value",
-          "spyable": true,
-          "show": {
-            "count": false,
-            "min": true,
-            "max": true,
-            "mean": true,
-            "std_deviation": false,
-            "sum_of_squares": false,
-            "total": false,
-            "variance": false
-          },
-          "field": "metric_value_number",
-          "title": "Memory"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "stats",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              1
-            ]
-          },
-          "style": {
-            "font-size": "24pt"
-          },
-          "format": "number",
-          "mode": "mean",
-          "display_breakdown": "yes",
-          "sort_field": "",
-          "sort_reverse": false,
-          "label_name": "Query",
-          "value_name": "Value",
-          "spyable": true,
-          "show": {
-            "count": false,
-            "min": true,
-            "max": true,
-            "mean": true,
-            "std_deviation": false,
-            "sum_of_squares": false,
-            "total": false,
-            "variance": false
-          },
-          "field": "metric_value_number",
-          "title": "Store"
-        },
-        {
-          "span": 2,
-          "editable": true,
-          "type": "sparklines",
-          "loadingEditor": false,
-          "mode": "mean",
-          "time_field": "@timestamp",
-          "value_field": "metric_value_number",
-          "interval": "30s",
-          "spyable": true,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              6
-            ]
-          }
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "A-MQ Usage",
-      "height": "300px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 5,
-          "editable": true,
-          "type": "histogram",
-          "loadingEditor": false,
-          "mode": "mean",
-          "time_field": "@timestamp",
-          "value_field": "metric_value_number",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_format": "none",
-          "grid": {
-            "max": null,
-            "min": 0
-          },
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              2,
-              5,
-              6
-            ]
-          },
-          "annotate": {
-            "enable": false,
-            "query": "*",
-            "size": 20,
-            "field": "_type",
-            "sort": [
-              "_score",
-              "desc"
-            ]
-          },
-          "auto_int": true,
-          "resolution": 100,
-          "interval": "1s",
-          "intervals": [
-            "auto",
-            "1s",
-            "1m",
-            "5m",
-            "10m",
-            "30m",
-            "1h",
-            "3h",
-            "12h",
-            "1d",
-            "1w",
-            "1y"
-          ],
-          "lines": true,
-          "fill": 3,
-          "linewidth": 3,
-          "points": true,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "spyable": true,
-          "zoomlinks": true,
-          "options": true,
-          "legend": true,
-          "show_query": true,
-          "interactive": true,
-          "legend_counts": false,
-          "timezone": "browser",
-          "percentage": false,
-          "zerofill": false,
-          "derivative": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "title": "A-MQ Usage",
-          "scaleSeconds": true
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "stats",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              3
-            ]
-          },
-          "style": {
-            "font-size": "24pt"
-          },
-          "format": "number",
-          "mode": "max",
-          "display_breakdown": "yes",
-          "sort_field": "",
-          "sort_reverse": false,
-          "label_name": "Query",
-          "value_name": "Value",
-          "spyable": true,
-          "show": {
-            "count": true,
-            "min": true,
-            "max": true,
-            "mean": false,
-            "std_deviation": false,
-            "sum_of_squares": false,
-            "total": false,
-            "variance": false
-          },
-          "field": "metric_value_number",
-          "title": "Producers"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "stats",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              4
-            ]
-          },
-          "style": {
-            "font-size": "24pt"
-          },
-          "format": "number",
-          "mode": "max",
-          "display_breakdown": "yes",
-          "sort_field": "",
-          "sort_reverse": false,
-          "label_name": "",
-          "value_name": "Value",
-          "spyable": true,
-          "show": {
-            "count": true,
-            "min": true,
-            "max": true,
-            "mean": false,
-            "std_deviation": false,
-            "sum_of_squares": false,
-            "total": false,
-            "variance": false
-          },
-          "title": "Consumers",
-          "field": "metric_value_number"
-        },
-        {
-          "error": false,
-          "span": 2,
-          "editable": true,
-          "type": "stats",
-          "loadingEditor": false,
-          "queries": {
-            "mode": "selected",
-            "ids": [
-              9
-            ]
-          },
-          "style": {
-            "font-size": "24pt"
-          },
-          "format": "number",
-          "mode": "max",
-          "display_breakdown": "yes",
-          "sort_field": "",
-          "sort_reverse": false,
-          "label_name": "",
-          "value_name": "Value",
-          "spyable": true,
-          "show": {
-            "count": true,
-            "min": true,
-            "max": true,
-            "mean": false,
-            "std_deviation": false,
-            "sum_of_squares": false,
-            "total": false,
-            "variance": false
-          },
-          "title": "Cnnections",
           "field": "metric_value_number"
         }
       ],

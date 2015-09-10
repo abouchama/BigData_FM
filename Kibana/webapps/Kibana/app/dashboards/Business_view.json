@@ -17,7 +17,7 @@
           "id": 1,
           "color": "#EAB839",
           "query": "brand:Samsung",
-          "alias": "",
+          "alias": "Samsung",
           "pin": false,
           "type": "lucene",
           "enable": true
@@ -26,7 +26,7 @@
           "id": 2,
           "color": "#6ED0E0",
           "query": "brand:Apple",
-          "alias": "",
+          "alias": "Apple",
           "pin": false,
           "type": "lucene",
           "enable": true
@@ -35,7 +35,7 @@
           "id": 3,
           "color": "#EF843C",
           "query": "type:\"log\"",
-          "alias": "",
+          "alias": "log",
           "pin": false,
           "type": "lucene",
           "enable": true
@@ -44,7 +44,7 @@
           "id": 4,
           "color": "#E24D42",
           "query": "type:\"jmx\"",
-          "alias": "",
+          "alias": "jmx",
           "pin": false,
           "type": "lucene",
           "enable": true
@@ -52,7 +52,7 @@
         "5": {
           "id": 5,
           "color": "#1F78C1",
-          "alias": "",
+          "alias": "Photo",
           "pin": false,
           "type": "lucene",
           "enable": true,
@@ -61,7 +61,7 @@
         "6": {
           "id": 6,
           "color": "#BA43A9",
-          "alias": "",
+          "alias": "Price",
           "pin": false,
           "type": "lucene",
           "enable": true,
